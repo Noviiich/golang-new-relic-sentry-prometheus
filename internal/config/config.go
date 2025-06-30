@@ -14,6 +14,7 @@ type Config struct {
 	Database    `yaml:"db" env-required:"true"`
 	NewRelic    `yaml:"new_relic" env-required:"true"`
 	Sentry      `yaml:"sentry" env-required:"true"`
+	HTTPServer  `yaml:"http_server" env-required:"true"`
 }
 
 type HTTPServer struct {
@@ -23,11 +24,16 @@ type HTTPServer struct {
 }
 
 type Database struct {
-	Host         string `yaml:"host"`
-	Username     string `yaml:"username"`
-	Password     string `yaml:"password"`
-	Port         string `yaml:"port"`
-	DatabaseName string `yaml:"db_name"`
+	Type                 string        `yaml:"type"`
+	Host                 string        `yaml:"host"`
+	Username             string        `yaml:"username"`
+	Password             string        `yaml:"password"`
+	Port                 string        `yaml:"port"`
+	DBName               string        `yaml:"db_name"`
+	SSLMode              string        `yaml:"ssl_mode"`
+	MaxDBConnections     int           `yaml:"max_db_connections"`
+	MaxDBIdleConnections int           `yaml:"max_db_idle_connections"`
+	MaxDBLifetime        time.Duration `yaml:"max_db_lifetime"`
 }
 
 type NewRelic struct {

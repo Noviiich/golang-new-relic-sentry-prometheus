@@ -1,0 +1,14 @@
+version: "3"  
+
+tasks:  
+  default: # Если не указать конкретную команду, будут выполнены дефолтные
+    cmds:  
+      - task: migrate  
+  migrate:  ## Команда для миграции
+    desc: "Run database migrations"
+    cmds:
+      - migrate -path ./migrations -database postgres://postgres:postgres@localhost:5433/postgres?sslmode=disable up
+  start:
+    desc: "Run app"
+    cmds:
+    - go run cmd/main.go --config=config/local.yaml

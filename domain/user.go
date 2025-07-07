@@ -10,3 +10,10 @@ type User struct {
 	Age         int       `json:"age"`
 	CreatedDate time.Time `json:"created_date"`
 }
+
+type UserRepository interface {
+	CreateUser(user User) (User, *AppError)
+	GetUserById(id uint) (User, *AppError)
+	UpdateUser(user User) (User, *AppError)
+	DeleteUserById(id uint) *AppError
+}

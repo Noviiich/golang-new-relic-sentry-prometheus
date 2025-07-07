@@ -17,3 +17,10 @@ type UserRepository interface {
 	UpdateUser(user User) (User, *AppError)
 	DeleteUserById(id uint) *AppError
 }
+
+type UserUseCase interface {
+	CreateUser(user User) (User, *AppError)
+	GetUserById(id uint) (User, *AppError)
+	UpdateUser(user User) (User, *AppError)
+	DeleteUserById(id uint) *AppError
+}
